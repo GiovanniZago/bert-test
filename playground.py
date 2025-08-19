@@ -19,9 +19,13 @@ def clean_lines(line):
     # remove <unk> flags
     line = re.sub(r'<unk>', '', line)
 
-    # remove 
+    # remove curve brackets and their content
     line = re.sub(r'\([^)]*\)', '', line)
+
+    # remove square brackets and their content
     line = re.sub(r'\[[^\]]*\]', '', line)
+
+    # remove quotes
     line = re.sub(r'""', '', line)
 
     return line
@@ -31,4 +35,4 @@ if __name__ == "__main__":
     lines = get_lines("data/train.txt")
     lines = list(filter(remove_noncontent, lines))
     lines = list(map(clean_lines, lines))
-    print(lines[2000:2010])
+    print(lines[3000:3010])
